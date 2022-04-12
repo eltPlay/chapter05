@@ -57,7 +57,9 @@
 
     <!--<foreach>的使用-->
     <select id="findCustomerByIds" parameterType="list" resultType="com.wjw.po.Customer">
-        select * from t_customer where id in
+        select *
+        from t_customer
+        where id in
         <foreach collection="list" item="id" index="index"
                  open="(" separator="," close=")">
             #{id}
@@ -68,6 +70,8 @@
     <select id="findCustomerByName" parameterType="com.wjw.po.Customer" resultType="com.wjw.po.Customer">
         <!--_parameter.getUsername()也可以直接写成传入的字段属性名，即username-->
         <bind name="pattern_username" value="'%' + _parameter.getUsername() + '%'"/>
-        select * from t_customer where username like #{pattern_username}
+        select *
+        from t_customer
+        where username like #{pattern_username}
     </select>
 </mapper>
